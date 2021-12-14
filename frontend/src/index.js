@@ -4,6 +4,7 @@ import App from "./App";
 import HomePage from "./pages/HomePage.js";
 import ContactPage from "./pages/ContactPage.js";
 import AddContactPage from "./pages/AddContactPage.js";
+import DeleteContactPage from "./pages/DeleteContactPage.js";
 
 const rootElement = document.getElementById("root");
 render(
@@ -11,8 +12,10 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="contacts" element={<HomePage />}>
-          <Route path=":contactID" element={<ContactPage />} />
           <Route path="add" element={<AddContactPage />} />
+          <Route path=":contactID" element={<ContactPage />}>
+            <Route path="delete" element={<DeleteContactPage />} />
+          </Route>
         </Route>
         <Route
           path="*"

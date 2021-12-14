@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import contactAPI from "../api/contactAPI";
 
 export default function ContactPage() {
@@ -32,6 +32,10 @@ export default function ContactPage() {
         <p>Phone: {contact.phone}</p>
         <p>Email: {contact.email}</p>
         <p>Notes: {contact.notes}</p>
+        <Link to={`/contacts/${contact.id}/delete/`}>
+          <button>Delete Contact</button>
+        </Link>
+        <Outlet />
       </main>
     );
   };

@@ -38,10 +38,22 @@ const addContact = async (contactObj) => {
   return await tryCatchFetch(url, init);
 };
 
+const deleteContact = async (contactID) => {
+  const url = `${BASE_URL}contacts/${contactID}/`;
+  const contactObj = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return await tryCatchFetch(url, contactObj);
+};
+
 const myExports = {
   fetchContacts,
   fetchContactByID,
   addContact,
+  deleteContact,
 };
 
 export default myExports;
