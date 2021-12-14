@@ -21,8 +21,27 @@ const fetchContacts = async () => {
   return await tryCatchFetch(url);
 };
 
+const fetchContactByID = async (contactID) => {
+  const url = `${BASE_URL}contacts/${contactID}/`;
+  return await tryCatchFetch(url);
+};
+
+const addContact = async (contactObj) => {
+  const url = `${BASE_URL}contacts/`;
+  const init = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(contactObj),
+  };
+  return await tryCatchFetch(url, init);
+};
+
 const myExports = {
   fetchContacts,
+  fetchContactByID,
+  addContact,
 };
 
 export default myExports;
